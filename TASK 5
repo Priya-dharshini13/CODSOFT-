@@ -1,0 +1,67 @@
+import random
+
+def get_user_choice():
+    return input("Choose rock, paper, or scissors: ").lower()
+
+def get_computer_choice():
+    return random.choice(["rock", "paper", "scissors"])
+
+def determine_winner(user, computer):
+    if user == computer:
+        return "tie"
+    elif (user == "rock" and computer == "scissors") or \
+         (user == "paper" and computer == "rock") or \
+         (user == "scissors" and computer == "paper"):
+        return "user"
+    else:
+        return "computer"
+
+def play_game():
+    user_score = 0
+    computer_score = 0
+    round_history = []
+    
+    while True:
+        user_choice = get_user_choice()
+        if user_choice not in ["rock", "paper", "scissors"]:
+            print("Invalid choice. Try again.")
+            continue
+
+        computer_choice = get_computer_choice()
+        print(f"Computer chose: {computer_choice}")
+
+        result = determine_winner(user_choice, computer_choice)
+
+        if result == "tie":
+            print("It's a tie!")
+            round_history.append(f"You: {user_choice}, Computer: {computer_choice} => Tie")
+        elif result == "user":
+            print("You win!")
+            user_score += 1
+            round_history.append(f"You: {user_choice}, Computer: {computer_choice} => You Win")
+        else:
+            print("You lose!")
+            computer_score += 1
+            round_history.append(f"You: {user_choice}, Computer: {computer_choice} => You Lose")
+
+        print(f"Score =>user score: {user_score}, Computer score: {computer_score}")
+
+        while True:
+            play_again = input("Do you want to play another round? (yes/no): ").lower()
+            if play_again in ["yes", "no"]:
+                break
+            print("Please enter 'yes' or 'no'.")
+
+        if play_again == "no":
+            break
+
+    print("\nGame Over. Final Scores:")
+    print(f"user score: {user_score}, Compute scorer: {computer_score}")
+    print("\nRound History:")
+    for round_result in round_history:
+        print(round_result)
+
+try:
+    play_game()
+except KeyboardInterrupt:
+    print("\nGame interrupted. Goodbye!")
