@@ -1,0 +1,36 @@
+print("-"*5)
+print("WELCOME TO MENU DRIVEN")
+print("-"*5)
+print("1.Addition")
+print("2.Subtraction")
+print("3.Multiplication")
+print("4.Division")
+#function to add
+def Sum(a,b):
+    return a+b
+#function to subtract
+def Sub(a,b):
+    return a-b
+#function to multiply
+def Mult(a,b):
+    return a*b
+#function to divide
+def Div(a,b):
+    if(b==0):
+        print("Divide by zero error")
+    else:
+        return a/b
+ch=int(input("Enter a chance : "))
+if(ch<5):
+    x=int(input("Enter operand 1 : "))
+    y=int(input("Enter operand 2 : "))
+    if ch==1:
+        print("Addition of ",x,"&",y,":",Sum(x,y))
+    elif ch==2:
+        print("Subtraction of ",x,"&",y,":",Sub(x,y))
+    elif ch==3:
+        print("Multiplication of ",x,"&",y,":",Mult(x,y))
+    elif ch==4:
+        print("Division of ",x,"&",y,":",Div(x,y))
+else:
+     print("Enter a valid chance")
